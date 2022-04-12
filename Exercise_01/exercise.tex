@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+
+\usepackage[a4paper,margin=2cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\lhead{\today}
+\chead{Exercise 01\\Algorithmic Foundations of Data Science}
+\rhead{Tanhim Islam\\Simon Michau\\Til Mohr}
+
+\setlength{\headheight}{50pt}
+
+\begin{document}
+
+\section*{Exercise 1}
+We can define the \textit{edit distance} $d_{\text{edit}}(w,w'): \Sigma^2 \rightarrow \mathbb{R}$ as follows. (Let $w=w_1 \dots w_n$ and $w'=w'_1 \dots w'_m$)
+
+\begin{equation*}
+	d_{\text{edit}}(w,w') \mapsto
+	\begin{cases}
+		\abs{w} & \text{if } \abs{w'}=0 \\
+		\abs{w'} & \text{if } \abs{w}=0 \\
+		d_{\text{edit}}(w_2 \dots w_n, w'_2 \dots w'_m) & \text{if } w_1 = w'_1 \\
+		1 + \min
+			\begin {cases}
+				d_{\text{edit}}(w_2 \dots w_n, w') \\
+				d_{\text{edit}}(w, w'_2 \dots w'_m) \\
+				(w_2 \dots w_n, w'_2 \dots w'_m)
+			\end{cases}
+			& \text{otherwise}
+	\end{cases}
+\end{equation*}
+
+As this definition of $d_{\text{edit}}$ works by removing at most the first character of each word, we can proof by induction the length of $x,y,z \in \Sigma$, that $d_{\text{edit}}$ is a metric on $\Sigma$:
+\begin{itemize}
+	\item	Let $\abs{x}=\abs{y}=\abs{z}=0$. Therefore, also $x=y=z$. \\
+			Then $0 \leq d_{\text{edit}} = 0$. Thus, Nonnegativity is given. \\
+			Since $x=y$, also $d_{\text{edit}}(x,y) = d_{\text{edit}}(y,x)$. Thus, Symmetry is given. \\
+			Since $x=y=z$, the Triangle Inequality $d_{\text{edit}}(x,z) \leq d_{\text{edit}}(x,y) + (d_{\text{edit}})(y,z) \Leftrightarrow 0 \leq 0 + 0$ is given.
+	\item 	Let $x=x_1 \dots x_n$, $y=y_1 \dots y_m$, and $z=z_1 \dots z_o$, $n,m,o \geq 1$. For $x'=x_2 \dots x_n$, $y'=y_2 \dots y_m$, and $z'=z_2 \dots z_o$ Nonnegativity, Symmetry, and the Triangle Inequality of $d_{\text{edit}}$ is given.
+	\item	Since $n,m \geq 1$, the second rule of Nonnegativity, namely $d_{\text{edit}}(x,y) \Leftrightarrow x=y$ does not apply here. \\
+			Since all $d_{\text{edit}}(x',y'), d_{\text{edit}}(x',y), d_{\text{edit}}(x,y')$ are non-negative, by definition of $d_{\text{edit}}$, $d_{\text{edit}}(x,y)$ must be non-negative as well. Therefore, the Nonnegativity of $d_{\text{edit}}$ is proven.
+	\item	Symmetry
+	\item	Triangle Inequality
+\end{itemize}
+
+\end{document}
