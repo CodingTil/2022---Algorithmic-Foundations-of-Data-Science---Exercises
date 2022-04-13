@@ -6,6 +6,38 @@
 \usepackage{amssymb}
 \usepackage{mathtools}
 
+\usepackage{listings}
+
+\usepackage{nameref}
+
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
 
 \usepackage{fancyhdr}
@@ -32,7 +64,7 @@ We can define the \textit{edit distance} $d_{\text{edit}}(w,w'): \Sigma^2 \right
 			\begin {cases}
 				d_{\text{edit}}(w_2 \dots w_n, w') \\
 				d_{\text{edit}}(w, w'_2 \dots w'_m) \\
-				(w_2 \dots w_n, w'_2 \dots w'_m)
+				d_{\text{edit}}(w_2 \dots w_n, w'_2 \dots w'_m)
 			\end{cases}
 			& \text{otherwise}
 	\end{cases}
@@ -47,8 +79,50 @@ As this definition of $d_{\text{edit}}$ works by removing at most the first char
 	\item 	Let $x=x_1 \dots x_n$, $y=y_1 \dots y_m$, and $z=z_1 \dots z_o$, $n,m,o \geq 1$. For $x'=x_2 \dots x_n$, $y'=y_2 \dots y_m$, and $z'=z_2 \dots z_o$ Nonnegativity, Symmetry, and the Triangle Inequality of $d_{\text{edit}}$ is given.
 	\item	Since $n,m \geq 1$, the second rule of Nonnegativity, namely $d_{\text{edit}}(x,y) \Leftrightarrow x=y$ does not apply here. \\
 			Since all $d_{\text{edit}}(x',y'), d_{\text{edit}}(x',y), d_{\text{edit}}(x,y')$ are non-negative, by definition of $d_{\text{edit}}$, $d_{\text{edit}}(x,y)$ must be non-negative as well. Therefore, the Nonnegativity of $d_{\text{edit}}$ is proven.
-	\item	Symmetry
+	\item	If $x_1 = y_1$, then $d_{\text{edit}}(x,y) = d_{\text{edit}}(x',y') = d_{\text{edit}}(y',x') = d_{\text{edit}}(y,x)$ \\
+			If $x_1 \neq y_1$, then
 	\item	Triangle Inequality
 \end{itemize}
+
+\pagebreak
+\section*{Exercise 2}
+Result (see \nameref{appendix} for code):
+\bigskip
+
+Classification: k=2 Manhattan Distance \\
+Test (1, -2, 0): Prediction 1 \\
+Test (4, -0.5, 2): Prediction -1 \\
+Test (1, 1.5, -2.5): Prediction 0 \\
+Test (-2, -1, -2): Prediction 0 \\
+Test (-4, -1, -1): Prediction 0
+\bigskip
+
+Classification: k=3 Manhattan Distance \\
+Test (1, -2, 0): Prediction 1 \\
+Test (4, -0.5, 2): Prediction -1 \\
+Test (1, 1.5, -2.5): Prediction 1 \\
+Test (-2, -1, -2): Prediction -1 \\
+Test (-4, -1, -1): Prediction 1
+\bigskip
+
+Classification: k=2 Euclidean Distance \\
+Test (1, -2, 0): Prediction 1 \\
+Test (4, -0.5, 2): Prediction -1 \\
+Test (1, 1.5, -2.5): Prediction 1 \\
+Test (-2, -1, -2): Prediction 0 \\
+Test (-4, -1, -1): Prediction 0
+\bigskip
+
+Classification: k=3 Euclidean Distance \\
+Test (1, -2, 0): Prediction 1 \\
+Test (4, -0.5, 2): Prediction -1 \\
+Test (1, 1.5, -2.5): Prediction 1 \\
+Test (-2, -1, -2): Prediction 1 \\
+Test (-4, -1, -1): Prediction -1
+\bigskip
+
+\section*{Appendix}\label{appendix}
+\subsection*{Code for Exercise 2}
+\lstinputlisting[language=Python]{code/k-nearest-neighbor.py}
 
 \end{document}
