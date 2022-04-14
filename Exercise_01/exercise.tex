@@ -42,6 +42,7 @@
 \lstset{style=mystyle}
 
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\Abs{\lVert}{\rVert}
 
 \usepackage{fancyhdr}
 
@@ -157,7 +158,7 @@ Splitting using feature $X_3$ \\
 	\item	$\langle a,x_1 \rangle + \frac{2}{3} = \frac{1}{3} \cdot (3+1+2-2+3) + \frac{2}{3} = \frac{7+2}{3} = 3 \geq 0$ \\
 			$\langle a,x_1' \rangle + \frac{2}{3} = \frac{1}{3} \cdot (3-1-2+2-3) + \frac{2}{3} = \frac{-1+2}{3} = \frac{1}{3} \geq 0$ \\
 			Therefore, $x_1,x_1'$ are contained in the same halfspace.
-	\item
+	\item	Let $X \in P$ be a point on the hyperplane. Then the length of the projection of $(x_1 - X)$ is $\frac{\abs{\langle a,x_0 - X \rangle}}{\Abs{a}} = \frac{\abs{\langle a,x_0 \rangle - \langle a,X \rangle}}{\Abs{a}} = \frac{\langle a,x_1 \rangle + b}{\Abs{a}} = \frac{3}{26 + \frac{1}{9}} = \frac{27}{235} \simeq 0.11489$
 \end{enumerate}
 
 \section*{Exercise 6}
