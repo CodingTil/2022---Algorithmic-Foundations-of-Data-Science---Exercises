@@ -8,6 +8,9 @@
 
 \usepackage{listings}
 
+\usepackage{enumerate}
+\usepackage{enumitem}
+
 \usepackage{nameref}
 
 \usepackage{xcolor}
@@ -121,8 +124,43 @@ Test (-2, -1, -2): Prediction 1 \\
 Test (-4, -1, -1): Prediction -1
 \bigskip
 
+\section*{Exercise 3}
+\begin{enumerate}[label=(\alph*)]
+	\item	$X_1 \land X_2 \land X_3$ is obviously in $1$-CNF, thus also in $2$-CNF. There exists no satisfiability equivalent formula in $2$-DNF. For this, there would have to be at least two disjunctions of conjunctions of at most 2 literals. Thus, such a formula would be true even if one literal would be false.
+	\item	$X_1 \lor X_2 \lor X_3$ is obviously in $1$-DNF, thus also in $2$-DNF. There exists no satisfiability equivalent formula in $2$-CNF. Since such a formula can only have 2 literals in each disjunction, there is no possibility of validating, that the third literal might be true. Therefore, such a formula is not true, when just one literal is true, the others false.
+	\item
+\end{enumerate}
+
+
+\section*{Exercise 4}
+\includegraphics{code/Decision-Tree.gv.pdf} \\
+Reasoning (see \nameref{appendix} for code):
+\bigskip
+
+Feature Set: $[X_1, X_2, X_3]$ \\
+Gains for each feature [(1, 0.5487949406953987), (0, 0.04879494069539858), (2, 0.04879494069539858)] \\
+Splitting using feature $X_2$
+\bigskip
+
+Feature Set: $[X_1, X_3]$ \\
+Gains for each feature [(0, 0.31127812445913283), (2, 0.31127812445913283)] \\
+Splitting using feature $X_1$
+\bigskip
+
+Feature Set: $[X_3]$ \\
+Gains for each feature $[(2, 1.0)]$ \\
+Splitting using feature $X_3$ \\
+
+\section*{Exercise 5}
+
+
+\section*{Exercise 6}
+
 \section*{Appendix}\label{appendix}
 \subsection*{Code for Exercise 2}
 \lstinputlisting[language=Python]{code/k-nearest-neighbor.py}
+
+\subsection*{Code for Exercise 4}
+\lstinputlisting[language=Python]{code/decision-tree.py}
 
 \end{document}
