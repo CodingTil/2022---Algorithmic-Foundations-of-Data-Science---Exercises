@@ -93,7 +93,7 @@ def decision_tree(feature_set, example_set) -> Node:
     new_feature_set.remove(partition_feature)
 
     print(f'Feature Set: {list(map(lambda feature: f"X_{feature+1}", feature_set))}')
-    print(f'Gains for each feature {gains}')
+    print(f'Gains for each feature {list(map(lambda x: (f"X_{x[0]+1}", f"Gain: {x[1]}"), gains))}')
     print(f'Splitting using feature X_{partition_feature + 1}')
 
     node = Node(f'X_{partition_feature + 1}')
