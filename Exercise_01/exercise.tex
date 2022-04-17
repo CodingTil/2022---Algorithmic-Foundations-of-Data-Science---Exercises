@@ -6,8 +6,10 @@
 \usepackage{amssymb}
 \usepackage{mathtools}
 
-\usepackage{booktabs}
-\usepackage[table,xcdraw]{xcolor}
+\usepackage{booktabs} % For tables
+\usepackage[table,xcdraw]{xcolor} % For tables
+
+\usepackage{tikz} % For graphs and trees
 
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
 
@@ -60,8 +62,8 @@ As this definition of $d_{\text{edit}}$ works by removing at most the first char
 \begin{tabular}{lllllll}
 \hline
 Coordinate           & Label & (1,-2,0)                    & (4,-0.5,2)                  & (1,1.5,-2.5)                & (-2,-1,-2)                  & (-4,-1,-1)                     \\ \hline
-(-4,-2.1,-1)         & -1    & 6.1                         & 12.6                        & 10.1                        & 4.1                         & \cellcolor[HTML]{FFFE65}1.1    \\
-(-3.6,-1.4,0.2)      & 1     & 5.3999                      & 10.3                        & 10.2                        & \cellcolor[HTML]{FFCC67}4.2 & \cellcolor[HTML]{FFFE65}1.9999 \\
+(-4,-2.1,-1)         & -1    & 6.1                         & 12.6                        & 10.1                        & \cellcolor[HTML]{FFCC67}4.1                         & \cellcolor[HTML]{FFFE65}1.1    \\
+(-3.6,-1.4,0.2)      & 1     & 5.3999                      & 10.3                        & 10.2                        & 4.2 & \cellcolor[HTML]{FFFE65}1.9999 \\
 (1,-0.2,-0.3)        & 1     & \cellcolor[HTML]{FFFE65}2.1 & 5.6                         & \cellcolor[HTML]{FFFE65}3.9 & 5.5                         & 6.5                            \\
 (0.3,-0.5,-0.5)      & 1     & \cellcolor[HTML]{FFCC67}2.7 & 6.2                         & 4.7                         & 4.3                         & 5.3                            \\
 ( -2, -3.5, -1)      & -1    & 5.5                         & 12.0                        & 9.5                         & \cellcolor[HTML]{FFFE65}3.5 & 4.5                            \\
@@ -81,7 +83,7 @@ Coordinate           & Label & (1,-2,0)                    & (4,-0.5,2)         
 ( 0.1, 0.1, 3.5)     & -1    & 6.5                         & 6.0                         & 8.3                         & 8.7                         & 9.7                            \\
 ( 2.8, 1.2, 2.4)     & -1    & 7.4                         & \cellcolor[HTML]{FFFE65}3.3 & 7.0                         & 11.4                        & 12.4                           \\ \hline
 Classification (k=2) &       & 1                           & -1                          & 0                           & 0                           & 0                              \\
-Classification (k=3) &       & 1                           & -1                          & 1                           & 1                           & 1                             \\ \hline
+Classification (k=3) &       & 1                           & -1                          & 1                           & -1                           & 1                             \\ \hline
 \end{tabular}
 \caption{Manhattan distance table for the 5 query points. Classifications for k=2 (a) and k=3 (b) are stated below.}
 \end{table}
@@ -116,6 +118,45 @@ Classification (k=3) &       & 1                             & -1               
 \end{tabular}
 \caption{Euclidian distance table for the 5 query points. Classifications for k=2 (c) and k=3 (d) are stated below.}
 \end{table}
+
+\section*{Exercise 3}
+\section*{Exercise 4}
+Determine which feature $a\in A$ is most suitable for discriminating by choosing the one providing the highest information gain. For this determine the information content of each feature by counting the positive (y=1) against the negative (y=0) occurences for each feature expression. Let $I(x,y)=-x\cdot \log_2(x)-y\cdot \log_2(y)$\\
+Initial information content: $I(\frac{3}{8},\frac{5}{8})=-\frac{3}{8}\cdot\log_2(\frac{3}{8})-\frac{5}{8}\cdot\log_2(\frac{5}{8})=0.9544$\\
+After splitting $X_1$:
+\begin{itemize}
+\item No: p=1 n=3
+\item Yes: p=2 n=2
+\item $\Rightarrow \frac{4}{8}\cdot I(\frac{1}{4},\frac{3}{4}) + \frac{4}{8}\cdot I(\frac{2}{4},\frac{2}{4}) = 0.9056\dots$
+\end{itemize}
+After splitting $X_2$:
+\begin{itemize}
+\item No: p=0 n=4
+\item Yes: p=3 n=1
+\item $\Rightarrow \frac{4}{8}\cdot I(\frac{0}{4},\frac{4}{4}) + \frac{4}{8}\cdot I(\frac{3}{4},\frac{1}{4}) = 0.4056\dots$
+\end{itemize}
+After splitting $X_3$:
+\begin{itemize}
+\item No: p=2 n=2
+\item Yes: p=1 n=3
+\item $\Rightarrow \frac{4}{8}\cdot I(\frac{2}{4},\frac{2}{4}) + \frac{4}{8}\cdot I(\frac{1}{4},\frac{3}{4}) = 0.9056\dots$
+\end{itemize}
+Of all the possible features, $X_2$ is suited best because it reduces the information content the most. Therefore the first split is at $X2$:\\
+\begin{tikzpicture}
+\node {$X_2$}
+    	child {
+    		node {No} edge from parent node [left] {No}
+    	}
+    	child {
+    		node {$\dots$} edge from parent node [right] {Yes}
+    	};
+\end{tikzpicture}
+Next 
+
+
+\section*{Exercise 5}
+\section*{Exercise 6}
+
 
 
 \end{document}
