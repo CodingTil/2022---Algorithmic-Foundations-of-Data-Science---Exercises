@@ -85,6 +85,15 @@ See \refname{appendix} for code.
 \end{enumerate}
 
 
+\section*{Exercise 2}
+\begin{enumerate}[label=(\alph*)]
+	\item	$\hat{w}=\textbf{1}=(1, \dots, 1) \in \{1\}^n$ is a suitable weight vector, since $\langle \hat{w},x \rangle$ is only positive, iff $x$ contains more $1$'s than $-1$'s.
+	\item	$\lambda = n$, since $\Abs{x}$ is maximum when $x$ consists of either only $1$'s or only $-1$'s. \\
+			$\gamma = \frac{1}{n}$ since the margin is minimal for a $x$ which consists of an by one number off amount of $1$'s and $-1'$. Thus, $\frac{\abs{\langle w,x \rangle}}{\Abs{w}} = \frac{1}{n}$ \\
+			Using Theorem 1.13 we can derive that the perceptron algorithm finds a linear separator after at most $\left(\frac{\lambda}{\gamma}\right)^2 = \left( \frac{n}{\frac{1}{n}}\right)^2 = n^4$ updates.
+\end{enumerate}
+
+
 \section*{Appendix}\label{appendix}
 \subsection*{Code for Exercise 1}
 \lstinputlisting[language=Python]{code/exercise_01.py}
