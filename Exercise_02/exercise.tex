@@ -60,8 +60,9 @@
 
 \begin{document}
 
-\section*{Exercise 1(a)}
-\subsection*{(i)}
+\section*{Exercise 1}
+\subsection*{(a)}
+\subsubsection*{(i)}
 \begin{tikzpicture}
 \draw[->, gray, thick] (-5,0) -- (5,0);
 \draw[->, gray, thick] (0,-5) -- (0,5);
@@ -94,7 +95,7 @@
 \filldraw[red] (2,-3) circle (2pt) node{};
 \end{tikzpicture}
 
-\subsection*{(ii)}
+\subsubsection*{(ii)}
 \begin{itemize}
 \item[] $\text{sgn}(\langle 0, \begin{bmatrix} 2 \\ 1 \end{bmatrix}\rangle)
 =\text{sgn}(0)=1\neq y_1$
@@ -106,7 +107,7 @@
 = \begin{bmatrix} -3 \\ -2 \end{bmatrix}$
 \end{itemize}
 
-\subsection*{(iii)}
+\subsubsection*{(iii)}
 \begin{tikzpicture}
 \draw[->, gray, thick] (-5,0) -- (5,0);
 \draw[->, gray, thick] (0,-5) -- (0,5);
@@ -146,12 +147,86 @@
 Blue: weight vector (with hyperplane) after first update\\
 Orange: weight vector (with hyperplane) after second update
 
-\subsection*{(iv)}
+\subsubsection*{(iv)}
 $\underset{(x,y)\in S}{\text{min}} \frac{|\langle w,x \rangle|}{|| w ||}
 = \underset{(x,y)\in S}{\text{min}} \frac{|\langle w,x \rangle|}{\sqrt{(-3)^2+2^2}}
 = \text{min} \{ \frac{|-4|}{\sqrt{13}}, \frac{|9|}{\sqrt{13}}, \frac{|11|}{\sqrt{13}}, \frac{|4|}{\sqrt{13}}, \frac{|-7|}{\sqrt{13}}, \frac{|-12|}{\sqrt{13}} \}
 = \frac{4}{\sqrt{13}} = 1.109$
 
-\section*{Exercise 1(b)}
+\subsection*{(b)}
+
+\section*{Exercise 2}
+\subsection*{(a)}
+maj is realizable using weight vector $\hat{w}=\underbrace{(1, \dots, 1)}_{n-times}$
+\subsection*{(b)}
+\subsection*{(c)}
+\subsection*{(d)}
+
+\section*{Exercise 3}
+\section*{Exercise 4}
+\subsection*{(a)}
+\begin{table}[h!]
+\begin{tabular}{llll}
+                        & Cluster($z^1$)   & Cluster($z^2$) & Cluster($z^3$)                 \\
+1. Iteration            & $x_1$            & $x_2$          & $x_3, x_4, x_5, x_6, x_7, x_8$ \\
+Updated cluster centres & $z^1=(-3,5)$     & $z^2=(-2,4)$   & $z^3=(0.5,1)$                  \\
+2. Iteration            & $x_1$            & $x_2, x_4$     & $x_3, x_5, x_6, x_7, x_8$      \\
+Updated cluster centres & $z^1=(-3,5)$     & $z^2=(-3,2)$   & $z^3=(1.4,1.2)$                \\
+3. Iteration            & $x_1, x_2$       & $x_2, x_3$     & $x_5, x_6, x_7, x_8$           \\
+Updated cluster centres & $z^1=(-2.5,4.5)$ & $z^2=(-2.5,1)$ & $z^3=(2,1)$                   
+\end{tabular}
+\end{table}
+
+
+\subsection*{(b)}
+\begin{tikzpicture}
+\draw[->, gray, thick] (-5,0) -- (5,0);
+\draw[->, gray, thick] (0,-5) -- (0,5);
+% x-Axis labels
+\draw (-5,0) node[anchor=north]{-5};
+\draw (-4,0) node[anchor=north]{-4};
+\draw (-3,0) node[anchor=north]{-3};
+\draw (-2,0) node[anchor=north]{-2};
+\draw (-1,0) node[anchor=north]{-1};
+\draw (1,0) node[anchor=north]{1};
+\draw (2,0) node[anchor=north]{2};
+\draw (3,0) node[anchor=north]{3};
+\draw (4,0) node[anchor=north]{4};
+% y-Axis labels
+\draw (0,-5) node[anchor=east]{-5};
+\draw (0,-4) node[anchor=east]{-4};
+\draw (0,-3) node[anchor=east]{-3};
+\draw (0,-2) node[anchor=east]{-2};
+\draw (0,-1) node[anchor=east]{-1};
+\draw (0,1) node[anchor=east]{1};
+\draw (0,2) node[anchor=east]{2};
+\draw (0,3) node[anchor=east]{3};
+\draw (0,4) node[anchor=east]{4};
+% points
+\filldraw[red] (-3,5) circle (2pt) node{};
+\filldraw[red] (-2,4) circle (2pt) node{};
+\filldraw[blue] (-1,2) circle (2pt) node{};
+\filldraw[blue] (-4,0) circle (2pt) node{};
+\filldraw[green] (1,-2) circle (2pt) node{};
+\filldraw[green] (2,0) circle (2pt) node{};
+\filldraw[green] (2,1) circle (2pt) node{};
+\filldraw[green] (3,5) circle (2pt) node{};
+
+\filldraw[black] (-2.5,4.5) circle (2pt) node[anchor=north]{$z^1$};
+\filldraw[black] (-2.5,1) circle (2pt) node[anchor=north]{$z^2$};
+\filldraw[black] (2,1) circle (2pt) node[anchor=north]{$z^3$};
+\end{tikzpicture}
+
+\subsection*{(c)}
+\subsection*{(d)}
+$z^1=\begin{bmatrix} 0 \\ 1 \end{bmatrix}$,
+$z^2=\begin{bmatrix} 0 \\ 2 \end{bmatrix}$,
+$z^3=\begin{bmatrix} 0 \\ 3 \end{bmatrix}$,
+\subsection*{(e)}
+Yes, for example 
+$z^1=\begin{bmatrix} -4 \\ 3 \end{bmatrix}$,
+$z^2=\begin{bmatrix} -1.5 \\ 3 \end{bmatrix}$,
+$z^3=\begin{bmatrix} 2 \\ -2 \end{bmatrix}$,
+\section*{Exercise 5}
 
 \end{document}
