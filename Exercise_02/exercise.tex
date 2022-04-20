@@ -93,9 +93,36 @@ See \refname{appendix} for code.
 			Using Theorem 1.13 we can derive that the perceptron algorithm finds a linear separator after at most $\left(\frac{\lambda}{\gamma}\right)^2 = \left( \frac{n}{\frac{1}{n}}\right)^2 = n^4$ updates.
 \end{enumerate}
 
+\section*{Exercise 4}
+See \refname{appendix} for code.
+\begin{enumerate}[label=(\alph*)]
+	\item	Clusters: [[], [], []] \\
+			Centres: [(-3, 5), (-2, 4), (-1, 2)] \\
+
+			Clusters: [[(-3, 5)], [(-2, 4)], [(-1, 2), (-4, 0), (1, -2), (2, 0), (2, 1), (3, 5)]] \\
+			Centres: [(-3.0, 5.0), (-2.0, 4.0), (0.5, 1.0)] \\
+
+			Clusters: [[(-3, 5)], [(-2, 4), (-4, 0)], [(-1, 2), (1, -2), (2, 0), (2, 1), (3, 5)]] \\
+			Centres: [(-3.0, 5.0), (-3.0, 2.0), (1.4, 1.2)] \\
+
+			Clusters: [[(-3, 5), (-2, 4)], [(-1, 2), (-4, 0)], [(1, -2), (2, 0), (2, 1), (3, 5)]] \\
+			Centres: [(-2.5, 4.5), (-2.5, 1.0), (2.0, 1.0)] \\
+
+			Final Clusters: [[(-3, 5), (-2, 4)], [(-1, 2), (-4, 0)], [(1, -2), (2, 0), (2, 1), (3, 5)]] \\
+			Final Centers: [(-2.5, 4.5), (-2.5, 1.0), (2.0, 1.0)]
+	\item	\includegraphics{code/exercise_04_a.png}
+	\item
+	\item	\[z^1=x_1=(-3,5), z^2=x_8=(3,5), z^2=x_4=(-4,0)\]
+			produces following clustering: \\
+			\includegraphics{code/exercise_04_d.png}
+	\item
+\end{enumerate}
+
 
 \section*{Appendix}\label{appendix}
 \subsection*{Code for Exercise 1}
 \lstinputlisting[language=Python]{code/exercise_01.py}
+\subsection*{Code for Exercise 4}
+\lstinputlisting[language=Python]{code/exercise_04.py}
 
 \end{document}
