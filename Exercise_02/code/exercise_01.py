@@ -11,7 +11,7 @@ S = [
 ]
 
 
-def plot(S, w_perc, w_svm):
+def plot(S, w_percs, w_svm):
     # scatter points
     x_values = [s[0][0] for s in S]
     y_values = [s[0][1] for s in S]
@@ -25,7 +25,10 @@ def plot(S, w_perc, w_svm):
     y_min = min(y_values)
     y_max = max(y_values)
 
-    for w in [w_perc, w_svm]:
+    w_list = list(w_percs + [w_svm])
+
+    for i in range(len(w_list)):
+        w = w_list[i]
         ortho_w = (-w[1], w[0])
 
         p_1 = (x_min, ortho_w[1] * (x_min / ortho_w[0]))
@@ -36,7 +39,7 @@ def plot(S, w_perc, w_svm):
         p_x_values = (p_1[0], p_2[0], p_3[0], p_4[0])
         p_y_values = (p_1[1], p_2[1], p_3[1], p_4[1])
 
-        pyplot.plot(p_x_values, p_y_values, label=('Perceptron' if w==w_perc else 'SVM'))#
+        pyplot.plot(p_x_values, p_y_values, label=('SVM' if w==w_svm else f'Perceptron Step {i}'))#
 
     pyplot.legend()
 
@@ -64,7 +67,8 @@ def check_consistency(S, w) -> bool:
     return True
 
 
-def perceptron(S) -> tuple:
+def perceptron(S) -> list:
+    w_list = list()
     w = (0, 0)
     while not check_consistency(S, w):
         for s in S:
@@ -74,11 +78,12 @@ def perceptron(S) -> tuple:
                 w_x = w[0] + s[1] * s[0][0]
                 w_y = w[1] + s[1] * s[0][1]
                 w = (w_x, w_y)
+                w_list.append(w)
                 # printing formatted for latex. Just copy and paste
                 print(f'Updating vector $w={w_old}$ using $(x,y)={s}$ \\\\')
                 print(
                     f'$w={w} \\rightarrow w={w_old} + y={s[1]} * x={s[0]}$ \\\\ \n\\bigskip \n')
-    return w
+    return w_list
 
 
 def margin(S, w) -> float:
@@ -90,18 +95,17 @@ def margin(S, w) -> float:
 def svm(S) -> tuple:
     classifier = LinearSVC(fit_intercept=False) # force heterogenous (fit_intercept=False)
     classifier.fit([[s[0][0], s[0][1]] for s in S], [s[1] for s in S])
-    print(classifier.intercept_)
     return (classifier.coef_[0][0], classifier.coef_[0][1])
 
 
 if __name__ == '__main__':
     print(f'Perceptron Learning: \\\\ \n\\bigskip \n')
-    w_perc = perceptron(S)
-    print(f'Margin: ${margin(S,w_perc)}$')
+    w_percs = perceptron(S)
+    print(f'Margin: ${margin(S,w_percs[-1])}$')
 
     print(f'SVM Learning: \\\\ \n\\bigskip \n')
     w_svm = svm(S)
     print(f'$w^*: {w_svm}$ \\\\')
     print(f'Margin: ${margin(S, w_svm)}$')
 
-    plot(S, w_perc, w_svm)
+    plot(S, w_percs, w_svm)
