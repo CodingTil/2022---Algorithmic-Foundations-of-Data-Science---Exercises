@@ -11,6 +11,8 @@
 \usepackage{booktabs} % For tables
 \usepackage[table,xcdraw]{xcolor} % For tables
 
+\usepackage{tikz} % TikZ
+
 \usepackage{enumerate}
 \usepackage{enumitem}
 
@@ -58,44 +60,98 @@
 
 \begin{document}
 
-\section*{Exercise 1}
-See \refname{appendix} for code.
-\begin{center}
-	\includegraphics{code/exercise_01.png}
-\end{center}
-\begin{enumerate}[label=(\alph*)]
-	\item	Perceptron Learning: \\
-			\bigskip
+\section*{Exercise 1(a)}
+\subsection*{(i)}
+\begin{tikzpicture}
+\draw[->, gray, thick] (-5,0) -- (5,0);
+\draw[->, gray, thick] (0,-5) -- (0,5);
+% x-Axis labels
+\draw (-5,0) node[anchor=north]{-5};
+\draw (-4,0) node[anchor=north]{-4};
+\draw (-3,0) node[anchor=north]{-3};
+\draw (-2,0) node[anchor=north]{-2};
+\draw (-1,0) node[anchor=north]{-1};
+\draw (1,0) node[anchor=north]{1};
+\draw (2,0) node[anchor=north]{2};
+\draw (3,0) node[anchor=north]{3};
+\draw (4,0) node[anchor=north]{4};
+% y-Axis labels
+\draw (0,-5) node[anchor=east]{-5};
+\draw (0,-4) node[anchor=east]{-4};
+\draw (0,-3) node[anchor=east]{-3};
+\draw (0,-2) node[anchor=east]{-2};
+\draw (0,-1) node[anchor=east]{-1};
+\draw (0,1) node[anchor=east]{1};
+\draw (0,2) node[anchor=east]{2};
+\draw (0,3) node[anchor=east]{3};
+\draw (0,4) node[anchor=east]{4};
+% points
+\filldraw[red] (2,1) circle (2pt) node{};
+\filldraw[green] (-1,3) circle (2pt) node{};
+\filldraw[green] (-3,1) circle (2pt) node{};
+\filldraw[green] (-2,-1) circle (2pt) node{};
+\filldraw[red] (-1,-5) circle (2pt) node{};
+\filldraw[red] (2,-3) circle (2pt) node{};
+\end{tikzpicture}
 
-			Updating vector $w=(0, 0)$ using $(x,y)=((2, 1), -1)$ \\
-			$w=(-2, -1) \rightarrow w=(0, 0) + y=-1 * x=(2, 1)$ \\
-			\bigskip
+\subsection*{(ii)}
+\begin{itemize}
+\item[] $\text{sgn}(\langle 0, \begin{bmatrix} 2 \\ 1 \end{bmatrix}\rangle)
+=\text{sgn}(0)=1\neq y_1$
+\item[$\Rightarrow$] $w\leftarrow w+y_1x_1 = 0 + (-1)\cdot\begin{bmatrix} 2 \\ 1 \end{bmatrix} 
+= \begin{bmatrix} -2 \\ -1 \end{bmatrix}$
+\item[] $\text{sgn}(\langle \begin{bmatrix} -2 \\ -1 \end{bmatrix}, \begin{bmatrix} -1 \\ 3 \end{bmatrix}\rangle)
+=\text{sgn}(-1)=-1\neq y_2$
+\item[$\Rightarrow$] $w\leftarrow w+y_2x_2 = \begin{bmatrix} -2 \\ -1 \end{bmatrix} + 1\cdot\begin{bmatrix} -1 \\ 3 \end{bmatrix} 
+= \begin{bmatrix} -3 \\ -2 \end{bmatrix}$
+\end{itemize}
 
-			Updating vector $w=(-2, -1)$ using $(x,y)=((-1, 3), 1)$ \\
-			$w=(-3, 2) \rightarrow w=(-2, -1) + y=1 * x=(-1, 3)$ \\
-			\bigskip
+\subsection*{(iii)}
+\begin{tikzpicture}
+\draw[->, gray, thick] (-5,0) -- (5,0);
+\draw[->, gray, thick] (0,-5) -- (0,5);
+% x-Axis labels
+\draw (-5,0) node[anchor=north]{-5};
+\draw (-4,0) node[anchor=north]{-4};
+\draw (-3,0) node[anchor=north]{-3};
+\draw (-2,0) node[anchor=north]{-2};
+\draw (-1,0) node[anchor=north]{-1};
+\draw (1,0) node[anchor=north]{1};
+\draw (2,0) node[anchor=north]{2};
+\draw (3,0) node[anchor=north]{3};
+\draw (4,0) node[anchor=north]{4};
+% y-Axis labels
+\draw (0,-5) node[anchor=east]{-5};
+\draw (0,-4) node[anchor=east]{-4};
+\draw (0,-3) node[anchor=east]{-3};
+\draw (0,-2) node[anchor=east]{-2};
+\draw (0,-1) node[anchor=east]{-1};
+\draw (0,1) node[anchor=east]{1};
+\draw (0,2) node[anchor=east]{2};
+\draw (0,3) node[anchor=east]{3};
+\draw (0,4) node[anchor=east]{4};
+% points
+\filldraw[red] (2,1) circle (2pt) node{};
+\filldraw[green] (-1,3) circle (2pt) node{};
+\filldraw[green] (-3,1) circle (2pt) node{};
+\filldraw[green] (-2,-1) circle (2pt) node{};
+\filldraw[red] (-1,-5) circle (2pt) node{};
+\filldraw[red] (2,-3) circle (2pt) node{};
+% weight vectors with hyperplanes
+\draw[->, blue, thick] (0,0) -- (-2,-1);
+\draw[blue, thick] (-2,4) -- (2,-4);
+\draw[->, orange, thick] (0,0) -- (-3,2);
+\draw[orange, thick] (-3,-4.5) -- (3,4.5);
+\end{tikzpicture}\\
+Blue: weight vector (with hyperplane) after first update\\
+Orange: weight vector (with hyperplane) after second update
 
-			Margin: $0.3076923076923077$
-	\item	SVM Learning: \\
-			\bigskip
+\subsection*{(iv)}
+$\underset{(x,y)\in S}{\text{min}} \frac{|\langle w,x \rangle|}{|| w ||}
+= \underset{(x,y)\in S}{\text{min}} \frac{|\langle w,x \rangle|}{\sqrt{(-3)^2+2^2}}
+= \text{min} \{ \frac{|-4|}{\sqrt{13}}, \frac{|9|}{\sqrt{13}}, \frac{|11|}{\sqrt{13}}, \frac{|4|}{\sqrt{13}}, \frac{|-7|}{\sqrt{13}}, \frac{|-12|}{\sqrt{13}} \}
+= \frac{4}{\sqrt{13}} = 1.109$
 
-			0.0
-			$w^*: (-0.6074814098863559, 0.30790724037405226)$ \\
-			Margin: $1.9555332420486629$
-\end{enumerate}
-
-
-\section*{Exercise 2}
-\begin{enumerate}[label=(\alph*)]
-	\item	$\hat{w}=\textbf{1}=(1, \dots, 1) \in \{1\}^n$ is a suitable weight vector, since $\langle \hat{w},x \rangle$ is only positive, iff $x$ contains more $1$'s than $-1$'s.
-	\item	$\lambda = n$, since $\Abs{x}$ is maximum when $x$ consists of either only $1$'s or only $-1$'s. \\
-			$\gamma = \frac{1}{n}$ since the margin is minimal for a $x$ which consists of an by one number off amount of $1$'s and $-1'$. Thus, $\frac{\abs{\langle w,x \rangle}}{\Abs{w}} = \frac{1}{n}$ \\
-			Using Theorem 1.13 we can derive that the perceptron algorithm finds a linear separator after at most $\left(\frac{\lambda}{\gamma}\right)^2 = \left( \frac{n}{\frac{1}{n}}\right)^2 = n^4$ updates.
-\end{enumerate}
-
-
-\section*{Appendix}\label{appendix}
-\subsection*{Code for Exercise 1}
-\lstinputlisting[language=Python]{code/exercise_01.py}
+\section*{Exercise 1(b)}
 
 \end{document}
