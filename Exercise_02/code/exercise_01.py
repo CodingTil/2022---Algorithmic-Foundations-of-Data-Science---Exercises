@@ -1,5 +1,6 @@
 from matplotlib import pyplot
 from sklearn.svm import LinearSVC
+from math import sqrt
 
 S = [
     ((2, 1), -1),
@@ -87,7 +88,7 @@ def perceptron(S) -> list:
 
 
 def margin(S, w) -> float:
-    distances = [abs(dot_product(w, s[0]))/(dot_product(w, w)) for s in S]
+    distances = [abs(dot_product(w, s[0]))/sqrt(dot_product(w, w)) for s in S]
     distances = sorted(distances)
     return distances[0]
 
