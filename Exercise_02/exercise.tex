@@ -93,6 +93,8 @@ See \refname{appendix} for code.
 \end{enumerate}
 
 \section*{Exercise 4}
+
+\section*{Exercise 4}
 See \refname{appendix} for code.
 \begin{enumerate}[label=(\alph*)]
 	\item	Clusters: [[], [], []] \\
@@ -114,6 +116,28 @@ See \refname{appendix} for code.
 	\item	\[z^1=x_1=(-3,5), z^2=x_8=(3,5), z^2=x_4=(-4,0)\]
 			produces following clustering: \\
 			\includegraphics{code/exercise_04_d.png}
+	\item	Yes, for example
+			$z^1=\begin{bmatrix} -4 \\ 3 \end{bmatrix}$,
+			$z^2=\begin{bmatrix} -1.5 \\ 3 \end{bmatrix}$,
+			$z^3=\begin{bmatrix} 2 \\ -2 \end{bmatrix}$,
+\end{enumerate}
+
+\section*{Exercise 5}
+
+\section*{Exercise 6}
+\begin{enumerate}[label=(\alph*)]
+	\item	\begin{align*}
+				& H(X \vert Y) + H(X) \Leftrightarrow (\sum_{y \in rg(Y)} Pr(Y=y) \left( \sum_{x \in rg(X)} Pr(X=x \vert Y=y) \cdot \log(\frac{1}{Pr(X=x \vert Y=y)} \right)) \\
+				& + (\sum_{y \in rg(Y)} Pr(Y=y) \cdot \log(\frac{1}{Pr(Y=y)})) \\
+				&\Leftrightarrow (\sum_{y \in rg(Y)} \sum_{x \in rg(X)} \left(  Pr(X=x, Y=y) \cdot \log(\frac{Pr(Y=y)}{Pr(X=x, Y=y)} \right)) \\
+				& + (\sum_{y \in rg(Y)} Pr(Y=y) \cdot \log(\frac{1}{Pr(Y=y)})) \\
+				&\Leftrightarrow (\sum_{y \in rg(Y)} \sum_{x \in rg(X)} \left( Pr(X=x, Y=y) \cdot (\log(Pr(Y=y) - \log(Pr(X=x, Y=y)) \right)) \\
+				& - (\sum_{y \in rg(Y)} Pr(Y=y) \cdot \log(Pr(Y=y))) \\
+				&\Leftrightarrow (\sum_{y \in rg(Y)} \sum_{x \in rg(X)} \left( Pr(X=x, Y=y) \cdot \log(Pr(Y=y)) \right)) \\
+				& + H(X,Y) \\
+				& - (\sum\limits_{\substack{y \in rg(Y) \\ x \in rg(X)}} Pr(Y=y, X=x) \cdot \log(Pr(Y=y))) \\
+				&\Leftrightarrow H(X,Y)
+			\end{align*}
 	\item
 \end{enumerate}
 
