@@ -90,12 +90,16 @@ See \refname{appendix} for code.
 	\item	$\lambda = n$, since $\Abs{x}$ is maximum when $x$ consists of either only $1$'s or only $-1$'s. \\
 			$\gamma = \frac{1}{n}$ since the margin is minimal for a $x$ which consists of an by one number off amount of $1$'s and $-1'$. Thus, $\frac{\abs{\langle w,x \rangle}}{\Abs{w}} = \frac{1}{n}$ \\
 			Using Theorem 1.13 we can derive that the perceptron algorithm finds a linear separator after at most $\left(\frac{\lambda}{\gamma}\right)^2 = \left( \frac{n}{\frac{1}{n}}\right)^2 = n^4$ updates.
+	\item	The smallest possible number of updates is $1$. Let $(x_1 \coloneqq (1, \dots, 1), y_1 \coloneqq 1)$ be the first element in $S$. \\
+			Initially the weight vector is $w=((0, \dots, 0))$. Thus, $sgn(\langle w, x_1 \rangle) \neq y_1$ holds and we update $w \leftarrow w + y_1 x_1 = (1, \dots, 1)$. \\
+			As discussed previously, this is already a suitable weight vector, therefore we do not have to update $w$ ever again.
+	\item
 \end{enumerate}
 
 \section*{Exercise 3}
 \begin{enumerate}[label=(\alph*)]
-	\item	\[\tau : \mathbb{R}^2 \rightarrow \mathbb{R}^4, (x,y) \mapsto (x,y,(\sin(x,y))^2, (\cos(x,y))^2)\]
-	\item	\[\tau' : \mathbb{R}^2 \rightarrow \mathbb{R}^3, (x,y) \mapsto (x,y, (\sin(x,y))^2)\]
+	\item	\[\tau : \mathbb{R}^2 \rightarrow \mathbb{R}^4, (x,y) \mapsto (x,y,(\sin(xy))^2, (\cos(xy))^2)\]
+	\item	\[\tau' : \mathbb{R}^2 \rightarrow \mathbb{R}^3, (x,y) \mapsto (x,y, (\sin(xy))^2)\]
 			We make use of $1 = (\sin(\phi))^2 + (\cos(\phi))^2$. Hence:
 			\begin{align*}
 				h(x,y) &= sgn(w_1 x + w_2 y + w_3 (\sin(xy))^2 + w_4 (\cos(xy))^2 - b) \\
