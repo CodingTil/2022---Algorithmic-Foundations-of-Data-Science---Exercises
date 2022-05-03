@@ -23,6 +23,7 @@
 *.synctex.gz
 *.synctex.gz(busy)
 *.pdfsync
+*.fls
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
@@ -31,3 +32,6 @@
 *-blx.aux
 *-blx.bib
 *.run.xml
+
+## MacOs things
+.DS_Store

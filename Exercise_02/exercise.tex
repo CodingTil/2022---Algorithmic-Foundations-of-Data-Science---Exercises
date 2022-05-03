@@ -157,12 +157,20 @@ See \refname{appendix} for code.
 				&= 0
 			\end{align*}
 	\item	\begin{enumerate}[label=(\roman*)]
-				\item	\[Pr(Z_{300} \leq 10) = 1 - Pr(Z_{300} \geq 11) \leq 1 - \frac{\frac{50}{11}}{300} = \frac{65}{66} = 0.985\]
-				\item
-				\item
-				\item
+				\item	\[Pr(Z_{300} \leq 10) = 1 - Pr(Z_{300} \geq 11) \geq 1 - \frac{\frac{50}{11}}{300} = 1-  \frac{65}{66} = \frac{1}{66} = 0.015\]
+				\item	\[ P(|Z_{300} - E(X)| \leq 10) = P(|Z_{300} - E(X)| < 11) \geq 1 - \frac{V(X)}{11^2} = 1 - \frac{\frac{125}{3}}{11^2} = \frac{238}{363} = 0.656\]
+				\item Chernoff: \[ P\left[\sum X_{i}\leq (1-\delta )\cdot pn\right]\leq \exp \left(-{\frac {\delta ^{2}}{2}}pn\right)\]
+				\[\Rightarrow (1-\delta)\cdot 50 = 10 \Leftrightarrow
+				1 - \delta = \frac{1}{5} \Leftrightarrow
+				- \delta = -\frac{4}{5} \Leftrightarrow
+				\delta = \frac{4}{5}\] \\
+				\[ \Rightarrow P(X \leq 10) \leq \exp(-\frac{\frac{4}{5}^2}{2}\cdot 50) = 1.125 \cdot 10^{-7}\]
+				\item \[ \Pr \left[\sum (X_{i}-{\textrm {E}}[X_{i}])\geq c\right]\leq {\textrm {exp}}\left({\frac {-2c^{2}}{\sum (b_{i}-a_{i})^{2}}}\right)\] with $a = 0 $ and $b = 1$. Centering around the mean of 50 leads to $a = -50$ and $b = -49$ and $c = 10 - 50 = -40$:\\
+				\[ P(X\leq 10) = 1 - P(X\qeq 10) > 1 - \exp\left({\frac {-2(-40)^{2}}{300 \cdot (-49 + 50)^{2}}}\right) = 0.999 \]
 			\end{enumerate}
+			
 \end{enumerate}
+The best bound is given by the Chernoff inequality as the actual probability is binomially distributed with \[ P(X\leq 10) = 3.03 \cdot 10^{-13} \] with $n = 300 $ and $p = \frac{1}{6}$.
 
 \section*{Exercise 6}
 \begin{enumerate}[label=(\alph*)]
