@@ -17,6 +17,8 @@ variables:
 
 build:
   image: $LATEX_IMAGE
+  tags:
+    - fabian
   script:
     - cd Exercise_03
     - latexmk -pdf
