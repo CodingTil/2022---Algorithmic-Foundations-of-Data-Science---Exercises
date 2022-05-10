@@ -18,7 +18,7 @@ variables:
 build:
   image: $LATEX_IMAGE
   script:
-    - cd $(ls -rt | tail -n 1)
+    - cd Exercise_03
     - latexmk -pdf
 
   artifacts:
