@@ -60,8 +60,33 @@
 
 \section*{Exercise 1}
 \begin{enumerate}[label=(\alph*)]
-	\item
-	\item
+	\item	Using Theorem 3.6:
+			\begin{align*}
+				\Pr_{T ~ \mathcal{D}^m} &\left( \forall h \in \mathcal{H}: \abs{err_T(h) - err_D(h)} \leq \epsilon \right) > 1 - \delta \\
+				\Pr_{T ~ \mathcal{D}^m} &\left( \forall h \in \mathcal{H}: \abs{err_T(h) - err_D(h)} \leq \epsilon \right) > 0.9 \\
+				\Rightarrow &\delta = 0.1 \\\\
+				m &\geq \frac{1}{2\epsilon^2} \log \left( \frac{2\abs{\mathcal{H}}}{\delta} \right) \\
+				143 &\geq \frac{1}{2\epsilon^2} \log \left( \frac{2 \cdot 2^3}{0.1} \right) \\
+				143 &\geq \frac{1}{2\epsilon^2} (\log(2^4) - \log(0.1)) \\
+				143 &\geq \frac{1}{2\epsilon^2} (4 - \log(0.1)) \\
+				\epsilon^2 &\geq \frac{(4 - \log(0.1))}{143 \dot 2} \\
+				\abs{\epsilon} &\geq \sqrt{\frac{(4 - \log(0.1))}{286}} \\
+				\Rightarrow &\epsilon \geq \sqrt{\frac{(4 - \log(0.1))}{286}} \\
+				\epsilon &\geq \sqrt{\frac{(4 - \log(0.1))}{286}} \\\\
+				\Pr_{T ~ \mathcal{D}^m} &\left( \forall h \in \mathcal{H}: \abs{err_T(h) - err_D(h)} \leq \epsilon \right) > 0.9 \\
+				\Pr_{T ~ \mathcal{D}^m} &\left( \forall h \in \mathcal{H}: \abs{0.03 - err_D(h)} \leq \sqrt{\frac{(4 - \log(0.1))}{286}} \right) > 0.9 \\
+				\Rightarrow &err_D(h) \leq 0.03 + \sqrt{\frac{(4 - \log(0.1))}{286}} \simeq 0.05560114718 \simeq 0.06
+			\end{align*}
+	\item	Using Theorem 3.4:
+			\begin{align*}
+				\Pr_{T ~ \mathcal{D}^m} &\left( \forall h \in \mathcal{H}: \text{if $h$ is consistent with $T$, then } err_D(h) \leq \epsilon \right) 1 - \delta \\
+				\Pr_{T ~ \mathcal{D}^m} &\left( \forall h \in \mathcal{H}: \text{if $h$ is consistent with $T$, then } err_D(h) \leq 0.01 \right) 0.9 \\
+				\Rightarrow &\epsilon = 0.01, \delta = 0.1 \\\\
+				m &\geq \frac{1}{\epsilon} \ln \left( \frac{\abs{\mathcal{H}}}{\delta} \right) \\
+				m &\geq \frac{1}{0.01} \ln \left( \frac{2^3}{0.1} \right) \\
+				m &\geq 100 (\ln(3) - \ln(0.1)) \sim 100 \cdot 3.40119738166 = 340.1197 \\
+				\Rightarrow &m \geq 341
+			\end{align*}
 \end{enumerate}
 
 \section*{Exercise 2}
