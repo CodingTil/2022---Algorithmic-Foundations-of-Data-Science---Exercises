@@ -101,8 +101,12 @@ See \refname{appendix} for code.
 \lstinputlisting{code/exercise_04_output.txt}
 
 \section*{Exercise 5}
-See \refname{appendix} for code.
-\lstinputlisting{code/exercise_05_output.txt}
+\begin{enumerate}[label=(\alph*)]
+	\item See \refname{appendix} for code.
+        \lstinputlisting{code/exercise_05_output.txt}
+    \item \(w_1^{(4)}\) and \(w_3^{(4)}\) are different because with \(\gamma = 0.5\) we put a certain weight on exploration.
+        Therefore, even with the same reward, different actions can have different weights as \(\gamma\) is part of the weight updating calculation.
+\end{enumerate}
 
 
 \section*{Exercise 6}
