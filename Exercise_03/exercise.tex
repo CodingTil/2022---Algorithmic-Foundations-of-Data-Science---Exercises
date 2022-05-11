@@ -116,11 +116,24 @@
 \section*{Exercise 6}
 \begin{enumerate}[label=(\alph*)]
 	\item	\begin{enumerate}[label=(\roman*)]
-				\item
-				\item
+				\item	\includegraphics{code/exercise_06_a.png}
+				\item	Similarly to how in $l=2$ the ``corners'' of the unit circle are the 2 unit vectors and their negations (so 4 in total), the ``corners'' of the unit circle in $l=3$ are the 3 unit vectors and their negations (so 6 in total). Combined with the edges and facing connecting them they make for a ``diamond'' shape.
 			\end{enumerate}
-	\item
-	\item
+	\item	$vol(B_1^2) = (\sqrt{1^2+1^2})^2 = 2$ and $vol(B_1^3) = 2 \cdot \frac{(\sqrt{1^2+1^2})^2 \cdot 1}{3} = \frac{4}{3}$
+	\item	Cover $B_1^l$ by $2k$ cylinders. The thickness of the cylinders is $t \coloneqq \frac{1}{k}$. Thus, the radius of the $i$th cylinder above (or below) is $r_i \coloneqq 1 - (i-1) \cdot t$. Therefore, the volume of the $i$th cylinder is $t \cdot r_i^{l-1} \cdot vol(B_1^{l-1})$. Thus:
+			\begin{align*}
+				vol(B_1^l) &\leq 2 \sum_{i=1}^k t \cdot r_i^{l-1} \cdot vol(B_1^{l-1}) \\
+				&= \left( 2 \sum_{i=1}^k \frac{1}{k} \left( 1 - \frac{i-1}{k} \right) ^ {l-1} \right) \cdot vol(B_1^{l-1}) \\
+				&= \left( 2 \sum_{i=0}^{k-1} \frac{1}{k} \left( 1 - \frac{i}{k} \right) ^ {l-1} \right) \cdot vol(B_1^{l-1}) \\
+				&= \left( 2 \frac{1}{k} \left( 1^{l-1} + (1 - \frac{1}{k})^{l-1} + \dots + (1 - \frac{k-1}{k})^{l-1} \right) \right) \cdot vol(B_1^{l-1}) \\
+				&= \left( 2 \left( \frac{k^{l-1}}{k^l} + (\frac{(k-1)^{l-1}}{k^l}) + \dots + (\frac{1^{l-1}}{k^l}) + (\frac{0^{l-1}}{k^l}) \right) \right) \cdot vol(B_1^{l-1}) \\
+				&= \left( 2 \underbrace{\sum_{i=0}^{k} \left( \frac{i^{l-1}}{k^l} \right)}_{\coloneqq S} \right) \cdot vol(B_1^{l-1})
+			\end{align*}
+			We can use the ratio test on the series $S$:
+			\begin{align*}
+				\lim_{k \rightarrow \infty} \abs{\frac{\left( \frac{(i + 1)^{l-1}}{k^l} \right)}{\left( \frac{i^{l-1}}{k^l} \right)}} = \abs{\frac{i+1}{i} ^ {l-1}} = \abs{(1 + \frac{1}{i}) ^ {l-1}} > 1
+			\end{align*}
+			\textbf{Huh? Something is wrong here}
 \end{enumerate}
 
 \section*{Appendix}\label{appendix}
