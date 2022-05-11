@@ -37,8 +37,8 @@ weights, probs = exp3(gamma=0.5, rounds=3, actions=action_seq - 1, rewards=rewar
 
 print(f'Probabilities: \n')
 for key, val in probs.items():
-    print(f'Round:\t{key + 1}\tProbabilities:\t{val}')
+    print(f'Round:\t{key + 1}\tProbabilities:\t{val.round(2)}')
 
 print(f'\nWeight vectors: \n')
 for key, val in weights.items():
-    print(f'Round:\t{key + 1}\tWeights:\t{val}')
+    print(f'Round:\t{key + 1}\tWeights:\t{val.round(2)}')
