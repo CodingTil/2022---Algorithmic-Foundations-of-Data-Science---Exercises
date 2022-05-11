@@ -1,0 +1,13 @@
+Probabilities: 
+
+Round:	1	Probabilities:	[0.33333333 0.33333333 0.33333333]
+Round:	2	Probabilities:	[0.45955989 0.27022006 0.27022006]
+Round:	3	Probabilities:	[0.28157333 0.51113437 0.20729231]
+Round:	4	Probabilities:	[0.25170754 0.42160258 0.32668988]
+
+Weight vectors: 
+
+Round:	1	Weights:	[1. 1. 1.]
+Round:	2	Weights:	[2.82842712 1.         1.        ]
+Round:	3	Weights:	[2.82842712 8.47907147 1.        ]
+Round:	4	Weights:	[2.82842712 8.47907147 5.32231117]
