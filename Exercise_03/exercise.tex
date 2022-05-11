@@ -13,7 +13,10 @@
 
 \usepackage{enumerate}
 \usepackage{enumitem}
-
+\usepackage{tikz}
+\usepackage{float}
+% \usepackage{pgfplots}
+% \pgfplotsset{compat = newest}
 \usepackage{nameref}
 
 \usepackage{xcolor}
@@ -94,11 +97,12 @@
 \section*{Exercise 3}
 
 \section*{Exercise 4}
-See \refname{appendix} for code.
-% \begin{enumerate}[label=(\alph*)]
-% 	\item 
-% \end{enumerate}
-\lstinputlisting{code/exercise_04_output.txt}
+\begin{enumerate}[label= (\alph*)]
+	\item See \refname{appendix} for code.
+        \lstinputlisting{code/exercise_04_output.txt}
+    \item No, the weights are always the same. This is because the loss matrix does not change throughout the algorithm, so the loss is always the same. 
+        If all the events still happen in the sequence, only in a different order, this won't have an effect as the loss will still be included in the updated weight.
+\end{enumerate}
 
 \section*{Exercise 5}
 \begin{enumerate}[label=(\alph*)]
@@ -110,7 +114,18 @@ See \refname{appendix} for code.
 
 
 \section*{Exercise 6}
+\begin{enumerate}[label= (\alph*)]
+    \item 
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=3.5in]{unit_ball_plane.png}
+            \end{figure}
 
+    \item The shape of \(B^3_1 \subset \mathcal{R}^3\) would look like a octahedron.
+
+\end{enumerate}
+
+    
 
 \section*{Appendix}\label{appendix}
 \subsection*{Code for Exercise 4}
