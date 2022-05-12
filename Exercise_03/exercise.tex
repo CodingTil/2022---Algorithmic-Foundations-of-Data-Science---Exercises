@@ -15,10 +15,8 @@
 \usepackage{enumitem}
 \usepackage{tikz}
 \usepackage{float}
-% \usepackage{pgfplots}
-% \pgfplotsset{compat = newest}
 \usepackage{nameref}
-
+\usepackage{hyperref}
 \usepackage{xcolor}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -115,13 +113,24 @@
 
 \section*{Exercise 6}
 \begin{enumerate}[label= (\alph*)]
+    \item   \begin{enumerate}[label= (\roman*)]
+                \item  \begin{figure}[H]
+                            \centering
+                            \includegraphics[width=3.5in]{unit_ball_plane.png}
+                        \end{figure}
+                \item The shape of \(B^3_1 \subset \mathcal{R}^3\) would look like a octahedron with the same edge length ($\sqrt{2}$).
+            \end{enumerate}
+    \item \(|diag(B^2_1)| = 2 \xRightarrow{\text{Pythagoras}} \text{edge length of }B^2_1 = \sqrt{2} \Rightarrow vol(B^2_1) = \sqrt{2}^2 = 2\) \\
+        \(vol(B^3_1) = \frac{1}{3}\sqrt{2}a^3\) with $a$ being the edge length of the octahedron \(\Rightarrow vol(B^3_1) = \frac{1}{3}\sqrt{2}^4 = \frac{1}{3}4 = \frac{4}{3} \simeq  1.33\)\\
+        A more general formula for the volume \(vol(B^l_1)\) is \(vol(B^l_1) = \frac{2^l}{l!}\) (cmp. this \href{https://doi.org/10.2307/30044198}{paper}).\\
+        Using \(l = 1, 2\) yields the same results.
     \item 
-            \begin{figure}[H]
-                \centering
-                \includegraphics[width=3.5in]{unit_ball_plane.png}
-            \end{figure}
-
-    \item The shape of \(B^3_1 \subset \mathcal{R}^3\) would look like a octahedron.
+        \begin{align*}
+            &\lim_{l\rightarrow\inf}{\text{vol}(B^l_1) = \frac{2^l}{l!}}\\
+            &\Rightarrow \lim_{l\rightarrow\inf}{\text{vol}(B^l_1)} = \frac{2}{1}\cdot \frac{2}{2}\cdot \frac{2}{3}\cdot \dotsb \cdot\frac{2}{l-1}\cdot \frac{2}{l}\\
+            & \leq 2 \cdot \frac{2}{l}  = \frac{4}{l} \\
+            &\Rightarrow \lim_{n\rightarrow\inf}{\frac{4}{l}} = 0
+        \end{align*}
 
 \end{enumerate}
 
@@ -132,6 +141,8 @@
 \lstinputlisting[language=Python]{code/exercise_04.py}
 \subsection*{Code for Exercise 5}
 \lstinputlisting[language=Python]{code/exercise_05.py}
+% \bibliographystyle{plainnat}
+% \bibliography{\jobname}
 
 
 \end{document}
