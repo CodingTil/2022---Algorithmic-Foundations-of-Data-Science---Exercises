@@ -8,6 +8,9 @@
 
 \usepackage{listings}
 
+\usepackage{booktabs} % For tables
+\usepackage[table,xcdraw]{xcolor} % For table
+
 \usepackage{parskip}
 
 \usepackage{booktabs} % For tables
@@ -15,9 +18,12 @@
 
 \usepackage{enumerate}
 \usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{float}
 
 \usepackage{nameref}
 
+\usepackage{hyperref}
 \usepackage{xcolor}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -61,23 +67,22 @@
 \begin{document}
 
 \section*{Exercise 1}
-\begin{enumerate}[label=(\alph*)]
-	\item	Using Theorem 3.6:
+\begin{enumerate}[label= (\alph*)]
+	\item	Using Theorem 3.6: With \(|\mathcal{H}| = 3^3 = 27\)
 			\begin{align*}
 				\Pr_{T ~ \mathcal{D}^m} &\left( \forall h \in \mathcal{H}: \abs{err_T(h) - err_D(h)} \leq \epsilon \right) > 1 - \delta \\
 				\Pr_{T ~ \mathcal{D}^m} &\left( \forall h \in \mathcal{H}: \abs{err_T(h) - err_D(h)} \leq \epsilon \right) > 0.9 \\
 				\Rightarrow &\delta = 0.1 \\\\
 				m &\geq \frac{1}{2\epsilon^2} \log \left( \frac{2\abs{\mathcal{H}}}{\delta} \right) \\
-				143 &\geq \frac{1}{2\epsilon^2} \log \left( \frac{2 \cdot 2^3}{0.1} \right) \\
-				143 &\geq \frac{1}{2\epsilon^2} (\log(2^4) - \log(0.1)) \\
-				143 &\geq \frac{1}{2\epsilon^2} (4 - \log(0.1)) \\
-				\epsilon^2 &\geq \frac{(4 - \log(0.1))}{143 \dot 2} \\
-				\abs{\epsilon} &\geq \sqrt{\frac{(4 - \log(0.1))}{286}} \\
-				\Rightarrow &\epsilon \geq \sqrt{\frac{(4 - \log(0.1))}{286}} \\
-				\epsilon &\geq \sqrt{\frac{(4 - \log(0.1))}{286}} \\\\
+				143 &\geq \frac{1}{2\epsilon^2} \log \left( \frac{2 \cdot 3^3}{0.1} \right) \\
+				143 &\geq \frac{1}{2\epsilon^2} (\log(54) - \log(0.1)) \\
+				143 &\geq \frac{1}{2\epsilon^2} (\log(54) - \log(0.1)) \\
+				\epsilon^2 &\geq \frac{(\log(54) - \log(0.1))}{143 \dot 2} \\
+				\abs{\epsilon} &\geq \sqrt{\frac{(\log(54) - \log(0.1))}{286}} \\
+				\Rightarrow &\epsilon \geq \sqrt{\frac{(\log(54) - \log(0.1))}{286}} \\
 				\Pr_{T ~ \mathcal{D}^m} &\left( \forall h \in \mathcal{H}: \abs{err_T(h) - err_D(h)} \leq \epsilon \right) > 0.9 \\
-				\Pr_{T ~ \mathcal{D}^m} &\left( \forall h \in \mathcal{H}: \abs{0.03 - err_D(h)} \leq \sqrt{\frac{(4 - \log(0.1))}{286}} \right) > 0.9 \\
-				\Rightarrow &err_D(h) \leq 0.03 + \sqrt{\frac{(4 - \log(0.1))}{286}} \simeq 0.05560114718 \simeq 0.06
+				\Pr_{T ~ \mathcal{D}^m} &\left( \forall h \in \mathcal{H}: \abs{0.03 - err_D(h)} \leq \sqrt{\frac{(\log(54) - \log(0.1))}{286}} \right) > 0.9 \\
+				\Rightarrow &err_D(h) \leq 0.03 + \sqrt{\frac{(\log(54) - \log(0.1))}{286}} \simeq 0.208149 \simeq 0.21
 			\end{align*}
 	\item	Using Theorem 3.4:
 			\begin{align*}
@@ -85,9 +90,9 @@
 				\Pr_{T ~ \mathcal{D}^m} &\left( \forall h \in \mathcal{H}: \text{if $h$ is consistent with $T$, then } err_D(h) \leq 0.01 \right) 0.9 \\
 				\Rightarrow &\epsilon = 0.01, \delta = 0.1 \\\\
 				m &\geq \frac{1}{\epsilon} \ln \left( \frac{\abs{\mathcal{H}}}{\delta} \right) \\
-				m &\geq \frac{1}{0.01} \ln \left( \frac{2^3}{0.1} \right) \\
-				m &\geq 100 (\ln(3) - \ln(0.1)) \sim 100 \cdot 3.40119738166 = 340.1197 \\
-				\Rightarrow &m \geq 341
+				m &\geq \frac{1}{0.01} \ln \left( \frac{3^3}{0.1} \right) \\
+				m &\geq 100 (\ln(27) - \ln(0.1)) \simeq = 559.84 \\
+				\Rightarrow &m \geq 560
 			\end{align*}
 \end{enumerate}
 
@@ -165,40 +170,50 @@ Using slide 3.26.
 \end{enumerate}
 
 \section*{Exercise 4}
-\begin{enumerate}[label=(\alph*)]
-	\item
-	\item
+\begin{enumerate}[label= (\alph*)]
+	\item See \refname{appendix} for code.
+        \lstinputlisting{code/exercise_04_output.txt}
+    \item No, the weights are always the same. This is because the loss matrix does not change throughout the algorithm, so the loss is always the same.
+        If all the events still happen in the sequence, only in a different order, this won't have an effect as the loss will still be included in the updated weight.
 \end{enumerate}
 
 \section*{Exercise 5}
 \begin{enumerate}[label=(\alph*)]
-	\item	\lstinputlisting{code/exercise_05_output.txt}
-	\item	This is due to the fact, that $p_3^{(3)} \neq p_1^{(1)}$.
+	\item See \refname{appendix} for code.
+        \lstinputlisting{code/exercise_05_output.txt}
+    \item \(w_1^{(4)}\) and \(w_3^{(4)}\) are different because with \(\gamma = 0.5\) we put a certain weight on exploration.
+        Therefore, even with the same reward, different actions can have different weights as \(\gamma\) is part of the weight updating calculation.
 \end{enumerate}
 
 \section*{Exercise 6}
-\begin{enumerate}[label=(\alph*)]
-	\item	\begin{enumerate}[label=(\roman*)]
-				\item	\includegraphics{code/exercise_06_a.png}
-				\item	Similarly to how in $l=2$ the ``corners'' of the unit circle are the 2 unit vectors and their negations (so 4 in total), the ``corners'' of the unit circle in $l=3$ are the 3 unit vectors and their negations (so 6 in total). Combined with the edges and facing connecting them they make for a ``diamond'' shape.
-			\end{enumerate}
-	\item	$vol(B_1^2) = (\sqrt{1^2+1^2})^2 = 2$ and $vol(B_1^3) = 2 \cdot \frac{(\sqrt{1^2+1^2})^2 \cdot 1}{3} = \frac{4}{3}$
-	\item	Cover $B_1^l$ by $2k$ cylinders. The thickness of the cylinders is $t \coloneqq \frac{1}{k}$. Thus, the radius of the $i$th cylinder above (or below) is $r_i \coloneqq 1 - (i-1) \cdot t$. Therefore, the volume of the $i$th cylinder is $t \cdot r_i^{l-1} \cdot vol(B_1^{l-1})$. Thus:
-			\begin{align*}
-				vol(B_1^l) &\leq 2 \sum_{i=1}^k t \cdot r_i^{l-1} \cdot vol(B_1^{l-1}) \\
-				&= \left( 2 \sum_{i=1}^k \frac{1}{k} \left( 1 - \frac{i-1}{k} \right) ^ {l-1} \right) \cdot vol(B_1^{l-1}) \\
-				&= \left( 2 \sum_{i=0}^{k-1} \frac{1}{k} \left( 1 - \frac{i}{k} \right) ^ {l-1} \right) \cdot vol(B_1^{l-1}) \\
-				&= \left( 2 \frac{1}{k} \left( 1^{l-1} + (1 - \frac{1}{k})^{l-1} + \dots + (1 - \frac{k-1}{k})^{l-1} \right) \right) \cdot vol(B_1^{l-1}) \\
-				&= \left( 2 \left( \frac{k^{l-1}}{k^l} + (\frac{(k-1)^{l-1}}{k^l}) + \dots + (\frac{1^{l-1}}{k^l}) + (\frac{0^{l-1}}{k^l}) \right) \right) \cdot vol(B_1^{l-1}) \\
-				&= \left( 2 \underbrace{\sum_{i=0}^{k} \left( \frac{i^{l-1}}{k^l} \right)}_{\coloneqq S} \right) \cdot vol(B_1^{l-1})
-			\end{align*}
-			We can use the ratio test on the series $S$:
-			\begin{align*}
-				\lim_{k \rightarrow \infty} \abs{\frac{\left( \frac{(i + 1)^{l-1}}{k^l} \right)}{\left( \frac{i^{l-1}}{k^l} \right)}} = \abs{\frac{i+1}{i} ^ {l-1}} = \abs{(1 + \frac{1}{i}) ^ {l-1}} > 1
-			\end{align*}
-			\textbf{Huh? Something is wrong here}
+\begin{enumerate}[label= (\alph*)]
+    \item   \begin{enumerate}[label= (\roman*)]
+                \item  \begin{figure}[H]
+                            \centering
+                            \includegraphics[width=3.5in]{code/exercise_06_a.png}
+                        \end{figure}
+                \item The shape of \(B^3_1 \subset \mathcal{R}^3\) would look like a octahedron with the same edge length ($\sqrt{2}$).
+            \end{enumerate}
+    \item \(|diag(B^2_1)| = 2 \xRightarrow{\text{Pythagoras}} \text{edge length of }B^2_1 = \sqrt{2} \Rightarrow vol(B^2_1) = \sqrt{2}^2 = 2\) \\
+        \(vol(B^3_1) = \frac{1}{3}\sqrt{2}a^3\) with $a$ being the edge length of the octahedron \(\Rightarrow vol(B^3_1) = \frac{1}{3}\sqrt{2}^4 = \frac{1}{3}4 = \frac{4}{3} \simeq  1.33\)\\
+        A more general formula for the volume \(vol(B^l_1)\) is \(vol(B^l_1) = \frac{2^l}{l!}\) (cmp. this \href{https://doi.org/10.2307/30044198}{paper}).\\
+        Using \(l = 1, 2\) yields the same results.
+    \item
+        \begin{align*}
+            &\lim_{l\rightarrow\inf}{\text{vol}(B^l_1) = \frac{2^l}{l!}}\\
+            &\Rightarrow \lim_{l\rightarrow\inf}{\text{vol}(B^l_1)} = \frac{2}{1}\cdot \frac{2}{2}\cdot \frac{2}{3}\cdot \dotsb \cdot\frac{2}{l-1}\cdot \frac{2}{l}\\
+            & \leq 2 \cdot \frac{2}{l}  = \frac{4}{l} \\
+            &\Rightarrow \lim_{n\rightarrow\inf}{\frac{4}{l}} = 0
+        \end{align*}
+
 \end{enumerate}
 
 \section*{Appendix}\label{appendix}
+\subsection*{Code for Exercise 4}
+\lstinputlisting[language=Python]{code/exercise_04.py}
+\subsection*{Code for Exercise 5}
+\lstinputlisting[language=Python]{code/exercise_05.py}
+% \bibliographystyle{plainnat}
+% \bibliography{\jobname}
 
 \end{document}

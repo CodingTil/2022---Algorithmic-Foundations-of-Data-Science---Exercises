@@ -1,41 +1,13 @@
-Iteration s=1 of 3: 
-
-Weights:
-	w_1^1 = 1.0
-	w_2^1 = 1.0
-	w_3^1 = 1.0
-
 Probabilities:
-	p_1^1 = 0.33
-	p_2^1 = 0.33
-	p_3^1 = 0.33
 
-Iteration s=2 of 3: 
+Round:  1       Probabilities:  [0.33 0.33 0.33]
+Round:  2       Probabilities:  [0.46 0.27 0.27]
+Round:  3       Probabilities:  [0.28 0.51 0.21]
+Round:  4       Probabilities:  [0.25 0.42 0.33]
 
-Weights:
-	w_1^2 = 2.83
-	w_2^2 = 1.0
-	w_3^2 = 1.0
+Weight vectors:
 
-Probabilities:
-	p_1^2 = 0.46
-	p_2^2 = 0.27
-	p_3^2 = 0.27
-
-Iteration s=3 of 3: 
-
-Weights:
-	w_1^3 = 2.83
-	w_2^3 = 8.48
-	w_3^3 = 1.0
-
-Probabilities:
-	p_1^3 = 0.28
-	p_2^3 = 0.51
-	p_3^3 = 0.21
-
-
-Final Weights:
-	w_1^4 = 2.83
-	w_2^4 = 8.48
-	w_3^4 = 5.32
+Round:  1       Weights:        [1. 1. 1.]
+Round:  2       Weights:        [2.83 1.   1.  ]
+Round:  3       Weights:        [2.83 8.48 1.  ]
+Round:  4       Weights:        [2.83 8.48 5.32]
