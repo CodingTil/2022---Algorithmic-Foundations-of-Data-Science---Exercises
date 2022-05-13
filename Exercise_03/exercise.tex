@@ -126,7 +126,7 @@
 			Let $Y' = \{(a_1, b_2)\} \subseteq \{(a_1, b_1), (a_1, b_2), (a_2, b_2)\} \subseteq Y$.
 			For all $h_{a,b} \in \mathcal{H}$ with $Y' \subseteq S_{h_{a,b}}$ $a=a_1 \lor b=b_2$ must hold. However, for such $h_{a,b}$ $(a_1, b_1) \in S_{h_{a,b}}$ or $(a_2, b_2) \in S_{h_{a,b}}$ would also hold. This is a contradiction.
 
-			Thus, the only valid form of $Y$ must be:
+			Thus, the only valid form of $Y$ must be (or analog when two $b$-components are equal):
 			$$Y \coloneqq \{(a_1, b_1), (a_1, b_2), (a_2, b_2)\}, a_1 \neq a_2 \land b_1 \neq b_2 \land b_1 \neq b_3 \land b_2 \neq b_3$$
 			We can prove that $Y$ shatters $\mathcal{H}$:
 			\begin{itemize}
@@ -159,7 +159,8 @@
 				\item	Let's try to add $y_{3,j} = (a_3, b_3)$, $a_3 \in \mathbb{R}\setminus\{a_1, a_2\}$. Then, for $Y' = \{(a_1, b_2), (a_2,b_3), (a_3, b_3)\}$ we cannot find any $h_{a,b} \in \mathcal{H}$, for which $Y' \subseteq S_{h_{a,b}}$ but $(a_1, b_1) \not\in S_{h_{a,b}}$. Thus, we cannot add any such $y_{3,j}$.
 			\end{itemize}
 			So, we cannot add any element to $Y$. Thus, all $Y$ that shatter $\mathcal{H}$ must be at most $\abs{Y} \leq 3$. Therefore, the VC Dimension is $3$.
-	\item
+	\item	The VC-Dimension is $\infty$. \\
+			Let be $Y \subseteq \mathfrak{X} = \Sigma^*$. For any $Y' \subseteq Y$ we can choose $L \coloneqq Y'$. Thus, $Y' = S_{h_L}$, so also $S_{h_L} \subseteq Y$. So $Y \cap S_{h_L} = S_{h_L} = Y'$. So $Y$ can also be infinite in size.
 \end{enumerate}
 
 \section*{Exercise 4}
