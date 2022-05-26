@@ -110,14 +110,14 @@ So, if for all $\lambda \in \Lambda_{A_c}$ it must hold that $\lambda \geq 0$, w
 \end{align*}
 
 \subsection*{(b)}
-Using Theorem 5.19, we create an orthogonal matrix $U \in \mathbb{R}^{3 \times 3}$ with the columns being the eigenvectors of $A$. We can now use Theorem 5.20 to create the diagonal matrix $\Lambda \in \mathbb{R}^{3 \times 3}$ where the eigenvalue-entry $\lambda_{i,i}$ corresponds to eigenvector in the column $i$ of $U$. \\
+Using Theorem 5.19, we create an orthogonal matrix $U \in \mathbb{R}^{n \times n}$ with the columns being the eigenvectors of $A$. We can now use Theorem 5.20 to create the diagonal matrix $\Lambda \in \mathbb{R}^{n \times n}$ where the eigenvalue-entry $\lambda_{i,i}$ corresponds to eigenvector in the column $i$ of $U$. \\
 A simple verification:
 \begin{align*}
 	A &= U \Lambda U^\top \\
 	A &= U \Lambda U^{-1} \\
 	A U &= U \Lambda \\
-	A v_i &= v_i \lambda_{i,i} \qquad, \forall i \in \left[3\right], v_i \coloneqq col_i(U) \\
-	A v_i &= \lambda_{i,i} v_i \qquad, \forall i \in \left[3\right], v_i \coloneqq col_i(U) \\
+	A v_i &= v_i \lambda_{i,i} \qquad, \forall i \in \left[n\right], v_i \coloneqq col_i(U) \\
+	A v_i &= \lambda_{i,i} v_i \qquad, \forall i \in \left[n\right], v_i \coloneqq col_i(U) \\
 \end{align*}
 Since $A$ is positive semi-definite, all entries $\lambda_{i,i} \geq 0$. Thus, we can create a diagonal matrix $\Lambda'$ consisting of the entries $\lambda'_{i,i} \coloneqq \sqrt{\lambda_{i,i}}$. Thus, $\Lambda = \Lambda' \Lambda'^\top$. Let $B \coloneqq U U \Lambda'$. Now:
 \begin{align*}
@@ -130,6 +130,17 @@ Since $A$ is positive semi-definite, all entries $\lambda_{i,i} \geq 0$. Thus, w
 \end{align*}
 
 \subsection*{(c)}
+Since $A$ is symmetric, the following holds $\forall x,y \in R^n$:
+\begin{equation*}
+	\langle Ax,y \rangle = \langle x,Ay \rangle
+\end{equation*}
+Let $v_1 \in E_1, v_2 \in E_2$. Then $A v_1 = \lambda_1 v_1$ and $A v_2 = \lambda_2 v_2$.
+\begin{align*}
+	0 &= \langle Av_1,v_2 \rangle - \langle v_1,Av_2 \rangle \\
+	&= \langle \lambda_1v_1,v_2 \rangle - \langle v_1,\lambda_2v_2 \rangle \\
+	&= (\lambda_1 - \lambda_2) \langle v_1,v_2 \rangle \\
+\end{align*}
+Since $\lambda_1 \neq \lambda_2$ it follows, that $\langle v_1,v_2 \rangle = 0$.
 
 \section*{Exercise 3}
 \subsection*{(a)}
