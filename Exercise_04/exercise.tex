@@ -78,7 +78,7 @@ Thus, the radius of the inner hyperball is equal to:
 \begin{equation*}
 	r \coloneqq d - \frac{s}{4} = \sqrt{l \cdot \left( \frac{s}{4} \right)^2} - \frac{s}{4}
 \end{equation*}
-Now, we simply must solve the following inequality to find an $l \in \mathbb{N}$ for an arbitrary but fixed $s \in \mathbb{R}_{>0}$ such that $B(Q_{l,s}) \subsetneq Q_{l,s}$:
+Now, we simply must solve the following inequality to find an $l \in \mathbb{N}$ for an arbitrary but fixed $s \in \mathbb{R}_{>0}$ such that $B(Q_{l,s}) \not\subseteq Q_{l,s}$:
 \begin{align*}
 	\frac{s}{2} &< r \\
 	\frac{s}{2} &< d - \frac{s}{4} \\
@@ -90,6 +90,25 @@ Now, we simply must solve the following inequality to find an $l \in \mathbb{N}$
 
 \section*{Exercise 2}
 \subsection*{(a)}
+Let's first find all eigenvalues of $A_c$:
+\begin{align*}
+	\{ \lambda \in \mathbb{R} &\mid \det\left( A_c - \lambda \cdot I_3 \right) = 0\} \\
+	\{ \lambda \in \mathbb{R} &\mid \det\left[ \begin{array}{ccc} 2 - \lambda & 0 & c \\ 0 & 1 - \lambda & 0 \\ c & 0 & 1 - \lambda \end{array} \right] = 0\} \\
+	\{ \lambda \in \mathbb{R} &\mid -\lambda^3 + 4 \cdot \lambda^2 + c^2 \cdot \lambda - 5 \cdot \lambda + 2 -c^2\} \\
+	\{ \lambda \in \mathbb{R} &\mid (\lambda - 1) \cdot (-\lambda^2 + 3 \dot \lambda + c^2 - 2)\} \\
+	\{ 1, \frac{3 - \sqrt{4 \cdot c^2 + 1}}{2}, \frac{3 + \sqrt{4 \cdot c^2 + 1}}{2}\} \eqqcolon \Lambda_{A_c}\\
+\end{align*}
+So, if for all $\lambda \in \Lambda_{A_c}$ it must hold that $\lambda \geq 0$, we must set $c$ such that the following inequality holds:
+\begin{align*}
+	\frac{3 - \sqrt{4 \cdot c^2 + 1}}{2} &\geq 0 \\
+	3 - \sqrt{4 \cdot c^2 + 1} &\geq 0 \\
+	3 &\geq \sqrt{4 \cdot c^2 + 1} \\
+	9 &\geq 4 \cdot c^2 + 1 \\
+	8 &\geq 4 \cdot c^2 \\
+	2 &\geq c^2 \\
+	c \in (-\sqrt{2}&, \sqrt{2}) \subseteq \mathbb{R}
+\end{align*}
+
 \subsection*{(b)}
 
 \section*{Exercise 3}
