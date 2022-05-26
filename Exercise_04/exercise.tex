@@ -64,8 +64,29 @@
 \subsection*{(a)}
 Situation for l=2 and s=2:
 \[Q_{2,2}=\lbrace [x_1 x_2]^T\in\mathbb{R}^2\mid |x_i|\leq 1 \text{ for all } i=1,2\rbrace = [-1,1]^2\]
-\includegraphics[width=3.5in]{code/exercise_01_a.png}
+\begin{center}
+	\includegraphics[width=3.5in]{code/exercise_01_a.png}
+\end{center}
+
 \subsection*{(b)}
+First, let's calculate the radius of the inner hyperball for any $l \in \mathbb{N}, s \in \mathbb{R}_{>0}$: \\
+The distance from the center of the inner hyperball (equal to the center of the hypercube) to the center of one of the $2^l$ outter hyperballs (doesn't matter which one) can be calculated the following:
+\begin{equation*}
+	d \coloneqq \sqrt{l \cdot \left( \frac{s}{4} \right)^2}
+\end{equation*}
+Thus, the radius of the inner hyperball is equal to:
+\begin{equation*}
+	r \coloneqq d - \frac{s}{4} = \sqrt{l \cdot \left( \frac{s}{4} \right)^2} - \frac{s}{4}
+\end{equation*}
+Now, we simply must solve the following inequality to find an $l \in \mathbb{N}$ for an arbitrary but fixed $s \in \mathbb{R}_{>0}$ such that $B(Q_{l,s}) \subsetneq Q_{l,s}$:
+\begin{align*}
+	\frac{s}{2} &< r \\
+	\frac{s}{2} &< d - \frac{s}{4} \\
+	\frac{s}{2} &< \sqrt{l \cdot \left( \frac{s}{4} \right)^2} - \frac{s}{4} \\
+	\frac{3 \cdot s}{4} &< \sqrt{l} \cdot \frac{s}{4} \\
+	3 &< \sqrt{l} \\
+	l &> 9
+\end{align*}
 
 \section*{Exercise 2}
 \subsection*{(a)}
