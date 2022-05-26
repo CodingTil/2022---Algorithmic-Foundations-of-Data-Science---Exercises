@@ -110,6 +110,26 @@ So, if for all $\lambda \in \Lambda_{A_c}$ it must hold that $\lambda \geq 0$, w
 \end{align*}
 
 \subsection*{(b)}
+Using Theorem 5.19, we create an orthogonal matrix $U \in \mathbb{R}^{3 \times 3}$ with the columns being the eigenvectors of $A$. We can now use Theorem 5.20 to create the diagonal matrix $\Lambda \in \mathbb{R}^{3 \times 3}$ where the eigenvalue-entry $\lambda_{i,i}$ corresponds to eigenvector in the column $i$ of $U$. \\
+A simple verification:
+\begin{align*}
+	A &= U \Lambda U^\top \\
+	A &= U \Lambda U^{-1} \\
+	A U &= U \Lambda \\
+	A v_i &= v_i \lambda_{i,i} \qquad, \forall i \in \left[3\right], v_i \coloneqq col_i(U) \\
+	A v_i &= \lambda_{i,i} v_i \qquad, \forall i \in \left[3\right], v_i \coloneqq col_i(U) \\
+\end{align*}
+Since $A$ is positive semi-definite, all entries $\lambda_{i,i} \geq 0$. Thus, we can create a diagonal matrix $\Lambda'$ consisting of the entries $\lambda'_{i,i} \coloneqq \sqrt{\lambda_{i,i}}$. Thus, $\Lambda = \Lambda' \Lambda'^\top$. Let $B \coloneqq U U \Lambda'$. Now:
+\begin{align*}
+	A &= U \Lambda U^\top \\
+	A &= U (\Lambda' \Lambda'^\top) U^\top \\
+	A &= U (\Lambda' \Lambda'^\top) U^\top \\
+	A &= (U \Lambda') (\Lambda'^\top U^\top) \\
+	A &= (U \Lambda') (U \Lambda')^\top \\
+	A &= B B^\top \\
+\end{align*}
+
+\subsection*{(c)}
 
 \section*{Exercise 3}
 \subsection*{(a)}
