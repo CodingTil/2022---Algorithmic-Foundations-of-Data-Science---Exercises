@@ -144,9 +144,37 @@ Since $\lambda_1 \neq \lambda_2$ it follows, that $\langle v_1,v_2 \rangle = 0$.
 
 \section*{Exercise 3}
 \subsection*{(a)}
+Plot and estimate first principal component $(\frac{1}{\sqrt{5}}, \frac{2}{\sqrt{5}})$
+\begin{center}
+	\includegraphics[width=3.5in]{code/exercise_03_a.png}
+\end{center}
+
 \subsection*{(b)}
+\begin{align*}
+	C &\coloneqq A^\top A \\
+	&= \left[ \begin{array}{cccccc}
+		-2 & -2 & -1 & 1 & 2 & 2 \\
+		-5 & -3 & 1 & 1 & 3 & 5
+	\end{array} \right] \left[ \begin{array}{cc}
+		-2 & -5 \\
+		-2 & 3 \\
+		-1 & 1 \\
+		1 & -1 \\
+		2 & 3 \\
+		2 & 5
+	\end{array} \right] \\
+	&= \left[ \begin{array}{cc}
+		18 & 18 \\
+		18 & 70
+	\end{array} \right]
+\end{align*}
+
 \subsection*{(c)}
+View code in the appendix for the calculations. \\
+The eigenvector we got is: $\left( \begin{array}{c} 0.298 \\ 0.954 \end{array}\right)$
+
 \subsection*{(d)}
+Well, they both point in the same general direction with a slope greater than 1. Our slope came out to be at $2$, since eye-balling stuff tends to round to integer values. The more optimal slope however seems to be even greater than $3 < \frac{0.954}{0.298}$.
 
 \section*{Exercise 4}
 \subsection*{(a)}
@@ -156,6 +184,11 @@ Since $\lambda_1 \neq \lambda_2$ it follows, that $\langle v_1,v_2 \rangle = 0$.
 \subsection*{(e)}
 
 \section*{Exercise 5}
+
+
+\section*{Appendix}\label{appendix}
+\subsection*{Code for Exercise 3}
+\lstinputlisting[language=Python]{code/exercise_03_c.py}
 
 
 \end{document}
