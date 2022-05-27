@@ -221,9 +221,28 @@ Well, they both point in the same general direction with a slope greater than 1.
 \end{equation*}
 
 \subsection*{(b)}
+View code in the appendix for the calculations. \\
+\begin{align*}
+	\lambda_1 &= 0.0 \\
+	u_1 &= \left( \begin{array}{c}
+		-0.354 \\ 0.169 \\ -0.408 \\ 0.408 \\ 0.548 \\ -0.214 \\ 0.408 \\ -0.002
+	\end{array} \right) \\
+	\lambda_2 &= 0.657 \\
+	u_2 &= \left( \begin{array}{c}
+		-0.354 \\ 0.493 \\ -0.149 \\ -0.558 \\ -0.358 \\ 0.056 \\ 0.408 \\ -0.002
+	\end{array} \right)
+\end{align*}
+
 \subsection*{(c)}
+The eigenvalue $\lambda_1$ is extremely close to 0. Therefore, $\lambda_1 u_1$ is very close to 0, so also $A u_1$ must be very close to 0.
+
 \subsection*{(d)}
+\begin{center}
+	\includegraphics[width=3.5in]{code/exercise_04_d.png}
+\end{center}
+
 \subsection*{(e)}
+The Spectral Clustering Algorithm returns the clusters computed using the k-means clustering algorithm on the points $\left( (u_1)_i, (u_2)_i \right), i = 1, \dots, 8$. Therefore, depending on the starting centroids, we might see a cluster containing only the two bottom right points, and another containing the remaining points.
 
 \section*{Exercise 5}
 
@@ -231,6 +250,8 @@ Well, they both point in the same general direction with a slope greater than 1.
 \section*{Appendix}\label{appendix}
 \subsection*{Code for Exercise 3}
 \lstinputlisting[language=Python]{code/exercise_03_c.py}
+\subsection*{Code for Exercise 4}
+\lstinputlisting[language=Python]{code/exercise_04_b.py}
 
 
 \end{document}
