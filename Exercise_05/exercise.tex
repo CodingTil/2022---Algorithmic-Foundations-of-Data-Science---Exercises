@@ -125,7 +125,23 @@ Solving this, we get:
 
 \section*{Exercise 2}
 \subsection*{(a)}
+\begin{align*}
+	V(\mathcal{H}) &\coloneqq \mathcal{VC}(G) \\
+	E(\mathcal{H}) &\coloneqq \{\{i,j\} \mid i,j \in V(\mathcal{H}) \land \exists_{v \in V(G)} (v \not\in i \land j = i \cup \{v\})\}
+\end{align*}
+$\mathcal{H}$ is connected, since, if $U$ is a vertex cover, adding any additional vertex $v$ to $U$ ($U' \coloneqq U \cup \{v\}$), results by definition also in a vertex cover.
+
+The maximum degree $\Delta$ of $\mathcal{H}$ is $\vert V(G) \vert$, since this is also a valid vertex cover for $G$, thus $V(G)$ is also in $V(\mathcal{H})$.
+
 \subsection*{(b)}
+\begin{align*}
+	q_{U,W} \coloneqq
+	\begin{cases}
+		\frac{1}{\vert V(G) \vert} & \text{if } \{U,W\} \in E({\mathcal{H}}) \\
+		1 - \frac{\vert N(U) \vert}{\vert V(G) \vert} & \text{if } U=W \\
+		0 & \text{otherwise}
+	\end{cases}
+\end{align*}
 
 \section*{Exercise 3}
 \textbf{SOLUTION IS WRONG}
