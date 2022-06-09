@@ -113,14 +113,14 @@ We have the following equations (also since $\pi$ is a left Eigenvector of $Q$ w
 Thus, we have the following equation system:
 \begin{align*}
 	\pi_1 + \pi_2 + \pi_3 &= 1 \\
-	0.1 \cdot \pi_1 + 0.2 \cdot pi_2 + 0.3 \cdot \pi_3 &= \pi_1 \\
-	0.6 \cdot \pi_1 + 0.6 \cdot pi_2 + 0.4 \cdot \pi_3 &= \pi_2 \\
-	0.3 \cdot \pi_1 + 0.2 \cdot pi_2 + 0.3 \cdot \pi_3 &= \pi_3 \\
+	0.1 \cdot \pi_1 + 0.2 \cdot \pi_2 + 0.3 \cdot \pi_3 &= \pi_1 \\
+	0.6 \cdot \pi_1 + 0.6 \cdot \pi_2 + 0.4 \cdot \pi_3 &= \pi_2 \\
+	0.3 \cdot \pi_1 + 0.2 \cdot \pi_2 + 0.3 \cdot \pi_3 &= \pi_3 \\
 \end{align*}
 
 Solving this, we get:
 \begin{equation*}
-	\pi \simeq \left(0.204082, 0.55101, 0.244897 \right)
+	\pi \simeq \left(0.204082, 0.55102, 0.244898 \right)
 \end{equation*}
 
 \section*{Exercise 2}
@@ -128,20 +128,80 @@ Solving this, we get:
 \subsection*{(b)}
 
 \section*{Exercise 3}
+\textbf{SOLUTION IS WRONG}
 \subsection*{(a)}
+\begin{equation*}
+	q_{ij}^{(n,r)} \coloneqq
+	\begin{cases}
+		\frac{1-r}{2} + \frac{r}{n} & \text{if } i \in \{1, \dots, n-1\} \land (j = i+1 \lor j=n) \\
+		\frac{1}{n} & \text{if } i=n \\
+		\frac{r}{n} & \text{otherwise}
+	\end{cases}
+\end{equation*}
+
 \subsection*{(b)}
+The Web graph is isometric "under rotation" around node $n$. Thus, the weight vectors for each $i \in \{1, \dots, n-1\}$ must be equal.
+Let $w_a$ denote the weight of each of these pages and $w_n$ denote the weight of page $n$.
+
+Similarly to Exercise 01.c), we get the following equation system:
+\begin{align*}
+	(n-1) \cdot w_a + w_n &= 1 \\
+	(w_a + w_n) \cdot (\frac{1-r}{2} + \frac{r}{n}) + (n-2) \cdot w_a \cdot (\frac{r}{n}) &= w_a \\
+	(n-1) \cdot w_a &= w_n
+\end{align*}
+Thus:
+\begin{align*}
+	w_n &= \frac{1}{2} \\
+	w_a &= \frac{1}{2(n-1)} \\
+	w_a &= \frac{r-1}{2(r+1)} \\
+	n &= \frac{2r}{r-1} \\
+\end{align*}
 
 \section*{Exercise 4}
 \subsection*{(a)}
+\verb|MAP| function:
+\begin{itemize}
+	\item	On input $(R, t)$, emit $(t,1)$.
+	\item	On input $(S, t)$, emit $(t,1)$.
+\end{itemize}
+\verb|REDUCE| function:
+\begin{itemize}
+	\item	On input $(t, values)$, emit $(Q,t)$ $\sum_{v \in values} v$ times.
+\end{itemize}
+
 \subsection*{(b)}
+\verb|MAP| function:
+\begin{itemize}
+	\item	On input $(R, t)$, emit $(t,1)$.
+	\item	On input $(S, t)$, emit $(t,1)$.
+\end{itemize}
+\verb|REDUCE| function:
+\begin{itemize}
+	\item	On input $(t, values)$, emit $(Q,t)$ $\sum_{v \in values} v$ times, if $t$ satisfies $C$.
+\end{itemize}
 
 \section*{Exercise 5}
 \subsection*{(a)}
+\verb|MAP| function:
+\begin{itemize}
+	\item	On input $(o, (c,p,q,d))$, emit $(p,q)$.
+\end{itemize}
+\verb|REDUCE| function:
+\begin{itemize}
+	\item	On input $(p, values)$, emit $(p,\sum_{q \in values} q)$.
+\end{itemize}
+
 \subsection*{(b)}
+\verb|MAP| function:
+\begin{itemize}
+	\item	On input $(o, (c,p,q,d))$, emit $(c,(p,q))$.
+\end{itemize}
+\verb|REDUCE| function:
+\begin{itemize}
+	\item	On input $(c, values)$, emit $(c,(p,q))$ for all $(p,q) \in values$, only if $\forall_{(p,q) \in values} q < 20\$$.
+\end{itemize}
+
 \subsection*{(c)}
-
-
-\section*{Appendix}\label{appendix}
-
+The algorithm is terrible, since, after Mapping all the data, we only have one $(key, values)$-pair left for the Reduction. Thus, we cannot distribute the computation of the \verb|REDUCE| function.
 
 \end{document}
